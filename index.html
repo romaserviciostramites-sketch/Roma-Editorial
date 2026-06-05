@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROMA Editorial — Donde nacen nuevas historias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1612;
+    --ink-soft: #3D3529;
+    --gold: #B8964A;
+    --gold-light: #D4AF6B;
+    --gold-pale: #F5EDD9;
+    --cream: #FAF6EF;
+    --cream-dark: #F0E8D8;
+    --paper: #FFFCF7;
+    --muted: #8A7A67;
+    --mid: #6B5E4A;
+    --border: rgba(184,150,74,0.2);
+    --border-dark: rgba(184,150,74,0.35);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    height: 68px;
+    background: rgba(255,252,247,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--gold); font-style: italic; }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 12.5px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--ink) !important;
+    color: var(--gold-light) !important;
+    padding: 8px 20px;
+    font-size: 12px !important;
+    letter-spacing: 0.1em !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 6% 80px;
+  }
+
+  .hero::before {
+    content: '"';
+    position: absolute;
+    top: -60px;
+    right: 5%;
+    font-family: 'Playfair Display', serif;
+    font-size: 500px;
+    color: rgba(184,150,74,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 5.5vw, 82px);
+    font-weight: 700;
+    line-height: 1.06;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--mid);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--gold-light);
+    padding: 14px 32px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold); color: var(--ink); }
+
+  .btn-ghost {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--mid);
+    font-size: 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .btn-ghost::after { content: '→'; font-style: normal; transition: transform 0.2s; }
+  .btn-ghost:hover { color: var(--gold); }
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  .hero-right {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-end;
+  }
+
+  .hero-stat {
+    text-align: right;
+    border-right: 2px solid var(--gold);
+    padding-right: 1.2rem;
+  }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 6%; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    max-width: 560px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ── QUÉ PUBLICAMOS ── */
+  #que-publicamos { background: var(--paper); }
+
+  .pub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .pub-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 340px;
+    line-height: 1.8;
+  }
+
+  .pub-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .pub-item {
+    background: var(--paper);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+  }
+  .pub-item:hover { background: var(--cream); }
+
+  .pub-item-icon {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(184,150,74,0.15);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+
+  .pub-item-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .pub-item-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* ── CÓMO FUNCIONA ── */
+  #como-funciona { background: var(--cream); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--border-dark);
+  }
+
+  .step {
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    background: var(--paper);
+    border: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .step-num span {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* ── ENVÍO DE MANUSCRITOS ── */
+  #envio {
+    background: var(--ink);
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .envio-left {
+    padding: 100px 8% 100px 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .envio-left .section-eyebrow { color: var(--gold); }
+  .envio-left .section-eyebrow::before { background: var(--gold); }
+  .envio-left .section-title { color: #FDFAF6; max-width: 400px; }
+  .envio-left .section-title em { color: var(--gold-light); }
+
+  .envio-desc {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(253,250,246,0.5);
+    line-height: 1.85;
+    margin: 1.5rem 0 2.5rem;
+    max-width: 380px;
+  }
+
+  .envio-requisitos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .req-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 13.5px;
+    color: rgba(253,250,246,0.55);
+    line-height: 1.6;
+  }
+  .req-item::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 3px;
+  }
+
+  .envio-right {
+    background: var(--cream);
+    padding: 80px 6% 80px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group { margin-bottom: 1.2rem; }
+
+  .form-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 11px 14px;
+    background: var(--paper);
+    border: 1px solid var(--border-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--ink);
+    color: var(--gold-light);
+    padding: 14px 32px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold); color: var(--ink); }
+
+  .form-note {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 1rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  /* ── EDITORIAL MANIFIESTO ── */
+  #manifiesto {
+    background: var(--gold-pale);
+    text-align: center;
+    padding: 100px 6%;
+  }
+
+  .manifiesto-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 46px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.35;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .manifiesto-author {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(184,150,74,0.15);
+    padding: 3rem 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FDFAF6;
+  }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .footer-links a, .footer-links button {
+    font-size: 12px;
+    text-decoration: none;
+    color: rgba(253,250,246,0.3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .footer-links a:hover, .footer-links button:hover { color: var(--gold); }
+
+  .footer-copy {
+    width: 100%;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(184,150,74,0.08);
+    font-size: 12px;
+    color: rgba(253,250,246,0.2);
+    text-align: center;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .pub-grid { grid-template-columns: 1fr 1fr; }
+    .steps-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .steps-grid::before { display: none; }
+    #envio { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .pub-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate { animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">ROMA <span>Editorial</span></a>
+  <ul class="nav-links">
+    <li><a href="#que-publicamos">Publicamos</a></li>
+    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#manifiesto">Manifiesto</a></li>
+    <li><a href="#envio" class="nav-cta">Enviar manuscrito</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:120px;">
+  <div class="hero-content">
+    <div class="hero-eyebrow animate">ROMA Editorial · Albacete</div>
+    <h1 class="hero-title animate delay-1">
+      Donde nacen<br>nuevas <em>historias</em>
+    </h1>
+    <p class="hero-subtitle animate delay-2">
+      Publicamos libros, cómics, revistas y todo tipo de obras que merecen ser leídas. Si tienes una historia que contar, queremos escucharla.
+    </p>
+    <div class="hero-actions animate delay-3">
+      <a href="#envio" class="btn-primary">Enviar mi obra</a>
+      <a href="#que-publicamos" class="btn-ghost">Qué publicamos</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hero-stat-num">Todo</div>
+      <div class="hero-stat-label">Tipo de obras</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">1ª</div>
+      <div class="hero-stat-label">Consulta gratis</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">∞</div>
+      <div class="hero-stat-label">Historias posibles</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ PUBLICAMOS -->
+<section id="que-publicamos">
+  <div class="pub-header">
+    <div>
+      <div class="section-eyebrow">Nuestro catálogo</div>
+      <h2 class="section-title">Qué <em>publicamos</em></h2>
+    </div>
+    <p class="pub-subtitle">Abrimos las puertas a todo tipo de narrativas, géneros y formatos. La creatividad no tiene límites.</p>
+  </div>
+
+  <div class="pub-grid">
+    <div class="pub-item">
+      <div class="pub-item-icon">I</div>
+      <div class="pub-item-title">Libros</div>
+      <div class="pub-item-desc">Novela, cuento, poesía, ensayo, no ficción. Cualquier género literario tiene cabida en nuestro catálogo.</div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-item-icon">II</div>
+      <div class="pub-item-title">Cómics</div>
+      <div class="pub-item-desc">Narrativa gráfica, manga, novela gráfica, humor gráfico. El arte visual también cuenta historias.</div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-item-icon">III</div>
+      <div class="pub-item-title">Revistas</div>
+      <div class="pub-item-desc">Publicaciones periódicas, fanzines, revistas temáticas o culturales. Todo proyecto editorial tiene valor.</div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-item-icon">IV</div>
+      <div class="pub-item-title">Otras obras</div>
+      <div class="pub-item-desc">Libros infantiles, ilustrados, álbumes, guías, manuales... Si lo puedes imaginar, lo podemos publicar.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFIESTO -->
+<section id="manifiesto">
+  <div class="section-eyebrow" style="justify-content:center;">Nuestro manifiesto</div>
+  <div class="manifiesto-quote">
+    "Cada historia merece ser contada. Cada voz, escuchada. Cada página, una puerta abierta al mundo."
+  </div>
+  <div class="manifiesto-author">— ROMA Editorial</div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="section-eyebrow">El proceso</div>
+  <h2 class="section-title">Cómo <em>funciona</em></h2>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num"><span>01</span></div>
+      <div class="step-title">Envía tu obra</div>
+      <div class="step-desc">Rellena el formulario con los datos de tu manuscrito o proyecto editorial y adjunta un resumen.</div>
+    </div>
+    <div class="step">
+      <div class="step-num"><span>02</span></div>
+      <div class="step-title">Revisamos</div>
+      <div class="step-desc">Nuestro equipo lee y evalúa cada propuesta con atención y respeto. Respondemos en un plazo de 30 días.</div>
+    </div>
+    <div class="step">
+      <div class="step-num"><span>03</span></div>
+      <div class="step-title">Hablamos</div>
+      <div class="step-desc">Si tu obra encaja con nuestro catálogo, te contactamos para conocerte y hablar sobre el proyecto.</div>
+    </div>
+    <div class="step">
+      <div class="step-num"><span>04</span></div>
+      <div class="step-title">Publicamos</div>
+      <div class="step-desc">Diseñamos, editamos y publicamos tu obra. Juntos llevamos tu historia a los lectores.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ENVÍO DE MANUSCRITOS -->
+<section id="envio" style="padding:0;">
+  <div class="envio-left">
+    <div class="section-eyebrow">Envío de obras</div>
+    <h2 class="section-title">Cuéntanos tu <em>historia</em></h2>
+    <p class="envio-desc">
+      Si tienes un manuscrito, un proyecto editorial o simplemente una idea que quieres desarrollar, escríbenos. Leemos todo lo que nos llega.
+    </p>
+    <div class="envio-requisitos">
+      <div class="req-item">Tu nombre completo</div>
+      <div class="req-item">Tu correo electrónico o teléfono de contacto</div>
+      <div class="req-item">Resumen o sinopsis de la obra (máx. 500 palabras)</div>
+      <div class="req-item">Primeras 20–30 páginas del manuscrito</div>
+      <div class="req-item">Breve biografía del autor</div>
+      <div class="req-item">Género, público objetivo y extensión aproximada</div>
+      <div class="req-item">Formato preferido: libro, cómic, revista u otro</div>
+    </div>
+  </div>
+
+  <div class="envio-right" style="align-items:center;justify-content:center;text-align:center;">
+    <div class="form-title">¿Listo para enviar?</div>
+    <div class="form-subtitle" style="margin-bottom:2.5rem;">Te respondemos en menos de 30 días</div>
+    <a href="https://mail.google.com/mail/?view=cm&to=roma.servicios.tramites@gmail.com&su=Propuesta%20editorial%20-%20ROMA%20Editorial" target="_blank" class="form-submit" style="display:inline-block;text-decoration:none;width:100%;">
+      Enviar propuesta por correo →
+    </a>
+    <p class="form-note">Tu propuesta será tratada de forma confidencial. No compartimos tu información con terceros.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ROMA <span>Editorial</span></div>
+  <ul class="footer-links">
+    <li><button onclick="openLegal('aviso')">Aviso legal</button></li>
+    <li><button onclick="openLegal('privacidad')">Privacidad</button></li>
+    <li><button onclick="openLegal('cookies')">Cookies</button></li>
+  </ul>
+  <div class="footer-copy">© 2026 ROMA Editorial · Parte de ROMA Servicios & Tramites. Todos los derechos reservados.</div>
+  <div class="footer-copy" style="border-top:none;padding-top:0;color:rgba(253,250,246,0.35);">📞 611 175 080 (preguntar por Rafa)</div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookieBanner" style="
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--ink);
+  border-top:1px solid rgba(184,150,74,0.2);
+  z-index:900;
+  transform:translateY(100%);
+  transition:transform 0.5s cubic-bezier(0.22,1,0.36,1);
+  box-shadow:0 -8px 40px rgba(0,0,0,0.2);
+">
+  <div style="max-width:1200px;margin:0 auto;padding:1.4rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+    <div style="display:flex;align-items:flex-start;gap:1rem;flex:1;min-width:260px;">
+      <div style="width:36px;height:36px;background:rgba(184,150,74,0.1);border:1px solid rgba(184,150,74,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B8964A" stroke-width="1.5" style="width:18px;height:18px;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:#FDFAF6;margin-bottom:0.3rem;">Usamos cookies</div>
+        <div style="font-size:12.5px;color:rgba(253,250,246,0.5);line-height:1.7;">
+          Utilizamos cookies para mejorar tu experiencia. Puedes aceptar todas, configurarlas o rechazarlas.
+          <button onclick="openLegal('cookies')" style="background:none;border:none;cursor:pointer;color:#B8964A;font-size:inherit;text-decoration:underline;text-underline-offset:2px;padding:0;">Política de Cookies</button>.
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center;">
+      <button id="cookieReject" style="background:transparent;border:1px solid rgba(253,250,246,0.15);color:rgba(253,250,246,0.5);font-size:11.5px;letter-spacing:0.07em;text-transform:uppercase;padding:0.6rem 1.1rem;cursor:pointer;transition:all 0.2s;">Rechazar</button>
+      <button id="cookieConfig" style="background:transparent;border:1px solid rgba(184,150,74,0.35);color:#B8964A;font-size:11.5px;letter-spacing:0.07em;text-transform:uppercase;padding:0.6rem 1.1rem;cursor:pointer;transition:all 0.2s;">Configurar</button>
+      <button id="cookieAccept" style="background:#B8964A;border:1px solid #B8964A;color:#1C1612;font-size:11.5px;letter-spacing:0.07em;text-transform:uppercase;padding:0.6rem 1.4rem;cursor:pointer;font-weight:500;transition:all 0.2s;">Aceptar todas</button>
+    </div>
+  </div>
+</div>
+
+<!-- COOKIE CONFIG -->
+<div id="cookieConfigOverlay" style="display:none;position:fixed;inset:0;background:rgba(15,12,9,0.65);z-index:1100;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(4px);">
+  <div style="background:var(--paper);width:100%;max-width:520px;display:flex;flex-direction:column;max-height:90vh;overflow:hidden;">
+    <div style="padding:2rem;background:var(--ink);display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#B8964A;margin-bottom:0.3rem;">Preferencias de privacidad</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:#FDFAF6;">Gestiona tus cookies</div>
+      </div>
+      <button onclick="document.getElementById('cookieConfigOverlay').style.display='none'" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(253,250,246,0.5);width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;">✕</button>
+    </div>
+    <div style="padding:1.8rem 2rem;overflow-y:auto;flex:1;">
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:1.6rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(184,150,74,0.2);">Selecciona qué tipos de cookies deseas permitir.</p>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid rgba(184,150,74,0.15);">
+        <div><div style="font-size:14px;font-weight:500;color:var(--ink);margin-bottom:0.3rem;">Cookies esenciales</div><div style="font-size:12px;color:var(--muted);line-height:1.65;">Necesarias para el funcionamiento básico.</div></div>
+        <div style="font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:#B8964A;white-space:nowrap;padding-top:2px;">Siempre activas</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid rgba(184,150,74,0.15);">
+        <div><div style="font-size:14px;font-weight:500;color:var(--ink);margin-bottom:0.3rem;">Cookies analíticas</div><div style="font-size:12px;color:var(--muted);line-height:1.65;max-width:320px;">Nos permiten mejorar el rendimiento del sitio.</div></div>
+        <label style="position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;margin-top:2px;">
+          <input type="checkbox" id="toggleAnalytics" style="opacity:0;width:0;height:0;">
+          <span id="sliderA" style="position:absolute;inset:0;background:rgba(184,150,74,0.15);border:1px solid rgba(184,150,74,0.2);transition:0.3s;cursor:pointer;"></span>
+        </label>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;padding:1.2rem 0;">
+        <div><div style="font-size:14px;font-weight:500;color:var(--ink);margin-bottom:0.3rem;">Cookies de marketing</div><div style="font-size:12px;color:var(--muted);line-height:1.65;max-width:320px;">Para mostrarte contenido relevante.</div></div>
+        <label style="position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0;margin-top:2px;">
+          <input type="checkbox" id="toggleMarketing" style="opacity:0;width:0;height:0;">
+          <span id="sliderM" style="position:absolute;inset:0;background:rgba(184,150,74,0.15);border:1px solid rgba(184,150,74,0.2);transition:0.3s;cursor:pointer;"></span>
+        </label>
+      </div>
+    </div>
+    <div style="padding:1.2rem 2rem;border-top:1px solid rgba(184,150,74,0.15);display:flex;justify-content:flex-end;gap:0.8rem;background:var(--cream);">
+      <button onclick="saveCookieConfig(false)" style="background:transparent;border:1px solid rgba(28,22,18,0.2);color:var(--muted);font-size:11.5px;letter-spacing:0.07em;text-transform:uppercase;padding:0.6rem 1.1rem;cursor:pointer;">Rechazar opcionales</button>
+      <button onclick="saveCookieConfig(true)" style="background:#B8964A;border:none;color:#1C1612;font-size:11.5px;letter-spacing:0.07em;text-transform:uppercase;padding:0.6rem 1.4rem;cursor:pointer;font-weight:500;">Guardar preferencias</button>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL PANEL -->
+<div id="legalOverlay" style="display:none;position:fixed;inset:0;background:rgba(15,12,9,0.6);z-index:1050;align-items:stretch;justify-content:flex-end;backdrop-filter:blur(4px);">
+  <div style="background:var(--paper);width:100%;max-width:600px;display:flex;flex-direction:column;overflow:hidden;">
+    <div style="background:var(--ink);padding:2.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;">
+      <div id="legalTitle" style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#FDFAF6;"></div>
+      <button onclick="closeLegal()" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(253,250,246,0.5);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all 0.2s;">✕</button>
+    </div>
+    <div id="legalBody" style="flex:1;overflow-y:auto;padding:2.5rem;font-size:13.5px;color:var(--ink-soft);line-height:1.85;"></div>
+  </div>
+</div>
+
+<style>
+  .footer-links button {
+    background:none;border:none;cursor:pointer;
+    font-size:12px;color:rgba(253,250,246,0.3);
+    letter-spacing:0.06em;text-transform:uppercase;
+    transition:color 0.2s;padding:0;
+  }
+  .footer-links button:hover { color:#B8964A; }
+
+  #legalBody h3 {
+    font-family:'Playfair Display',serif;font-size:18px;font-weight:600;
+    color:var(--ink);margin:1.8rem 0 0.6rem;
+    padding-bottom:0.4rem;border-bottom:1px solid rgba(184,150,74,0.2);
+  }
+  #legalBody h3:first-child { margin-top:0; }
+  #legalBody p { margin-bottom:0.9rem;color:var(--mid); }
+  #legalBody ul { list-style:none;margin:0.5rem 0 1rem;display:flex;flex-direction:column;gap:0.4rem; }
+  #legalBody ul li { padding-left:1.2rem;position:relative;color:var(--mid); }
+  #legalBody ul li::before { content:'—';position:absolute;left:0;color:#B8964A;font-size:11px; }
+  #legalBody .legal-updated { display:inline-block;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#B8964A;border:1px solid rgba(184,150,74,0.2);padding:4px 10px;margin-bottom:1.5rem; }
+</style>
+
+<script>
+  const legalContent = {
+    aviso: {
+      title: 'Aviso Legal',
+      html: `
+        <span class="legal-updated">Última actualización: enero 2026</span>
+        <h3>1. Datos del titular</h3>
+        <p>En cumplimiento de la Ley 34/2002 (LSSI-CE):</p>
+        <ul>
+          <li><strong>Denominación:</strong> ROMA Editorial · Parte de ROMA Servicios & Tramites</li>
+          <li><strong>Actividad:</strong> Editorial — publicación de libros, cómics, revistas y otras obras</li>
+          <li><strong>Dirección:</strong> C. Mayor 7, Nava de Campaña / C. de Dulce Chacón 6, Albacete</li>
+          <li><strong>Teléfono:</strong> 611 175 080</li>
+          <li><strong>Correo:</strong> roma.servicios.tramites@gmail.com</li>
+        </ul>
+        <h3>2. Condiciones de uso</h3>
+        <p>El acceso a este sitio implica la aceptación de las presentes condiciones. El usuario se compromete a hacer un uso adecuado de los contenidos y servicios.</p>
+        <h3>3. Propiedad intelectual</h3>
+        <p>Todos los contenidos de este sitio (textos, diseño, código) son propiedad de ROMA Editorial o de terceros que han autorizado su uso. Queda prohibida su reproducción sin autorización expresa.</p>
+        <h3>4. Manuscritos recibidos</h3>
+        <p>Los manuscritos y propuestas recibidas serán tratados de forma confidencial. ROMA Editorial no adquiere ningún derecho sobre las obras recibidas salvo acuerdo expreso por escrito.</p>
+        <h3>5. Legislación aplicable</h3>
+        <p>Legislación española vigente. Fuero: Juzgados y Tribunales de Albacete.</p>
+      `
+    },
+    privacidad: {
+      title: 'Política de Privacidad',
+      html: `
+        <span class="legal-updated">Última actualización: enero 2026</span>
+        <h3>1. Responsable del tratamiento</h3>
+        <p>ROMA Editorial · ROMA Servicios & Tramites. Contacto: roma.servicios.tramites@gmail.com / 611 175 080.</p>
+        <h3>2. Datos que recogemos</h3>
+        <p>Únicamente los datos que nos facilitas voluntariamente al enviarnos tu propuesta editorial:</p>
+        <ul>
+          <li>Nombre y apellidos</li>
+          <li>Correo electrónico y/o teléfono</li>
+          <li>Datos de la obra (título, género, sinopsis)</li>
+          <li>Manuscrito o extracto adjunto</li>
+        </ul>
+        <h3>3. Finalidad y base legal</h3>
+        <ul>
+          <li>Evaluar tu propuesta editorial (base: medidas precontractuales)</li>
+          <li>Contactarte si tu obra encaja con nuestro catálogo (base: consentimiento)</li>
+        </ul>
+        <h3>4. Conservación</h3>
+        <p>Conservamos los datos el tiempo necesario para evaluar la propuesta. Si no hay acuerdo editorial, los eliminamos en un plazo máximo de 12 meses.</p>
+        <h3>5. Tus derechos</h3>
+        <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a roma.servicios.tramites@gmail.com. También puedes reclamar ante la AEPD (aepd.es).</p>
+        <h3>6. Seguridad</h3>
+        <p>Adoptamos las medidas necesarias para proteger tus datos y los de tu obra frente a accesos no autorizados.</p>
+      `
+    },
+    cookies: {
+      title: 'Política de Cookies',
+      html: `
+        <span class="legal-updated">Última actualización: enero 2026</span>
+        <h3>1. ¿Qué son las cookies?</h3>
+        <p>Pequeños archivos que los sitios web almacenan en tu dispositivo para recordar tus preferencias y mejorar la experiencia.</p>
+        <h3>2. Cookies que utilizamos</h3>
+        <p><strong>Esenciales (siempre activas)</strong></p>
+        <ul>
+          <li><strong>cookie_consent</strong> — Guarda tus preferencias de cookies. Duración: 12 meses.</li>
+        </ul>
+        <p><strong>Analíticas (requieren consentimiento)</strong></p>
+        <ul>
+          <li><strong>_ga, _gid</strong> — Google Analytics. Análisis anónimo del tráfico. Duración: hasta 2 años.</li>
+        </ul>
+        <p><strong>Marketing (requieren consentimiento)</strong></p>
+        <ul>
+          <li><strong>_fbp</strong> — Facebook Pixel. Mide efectividad de anuncios. Duración: 3 meses.</li>
+        </ul>
+        <h3>3. Gestión de cookies</h3>
+        <p>Puedes cambiar tus preferencias en cualquier momento desde el banner de cookies. También puedes gestionarlas desde tu navegador:</p>
+        <ul>
+          <li>Chrome: Configuración → Privacidad → Cookies</li>
+          <li>Firefox: Opciones → Privacidad y seguridad</li>
+          <li>Safari: Preferencias → Privacidad</li>
+          <li>Edge: Configuración → Privacidad</li>
+        </ul>
+        <h3>4. Más información</h3>
+        <p>Consultas sobre cookies: roma.servicios.tramites@gmail.com o en aepd.es.</p>
+      `
+    }
+  };
+
+  function openLegal(type) {
+    const data = legalContent[type];
+    document.getElementById('legalTitle').textContent = data.title;
+    document.getElementById('legalBody').innerHTML = data.html;
+    const overlay = document.getElementById('legalOverlay');
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLegal() {
+    document.getElementById('legalOverlay').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('legalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeLegal();
+  });
+
+  const COOKIE_KEY = 'roma_editorial_consent';
+
+  function setCookieConsent(value) {
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + 1);
+    document.cookie = COOKIE_KEY + '=' + value + '; expires=' + expires.toUTCString() + '; path=/; SameSite=Lax';
+  }
+
+  function getCookieConsent() {
+    const match = document.cookie.match(new RegExp('(^| )' + COOKIE_KEY + '=([^;]+)'));
+    return match ? match[2] : null;
+  }
+
+  function hideBanner() {
+    document.getElementById('cookieBanner').style.transform = 'translateY(100%)';
+  }
+
+  document.getElementById('cookieAccept').addEventListener('click', function() { setCookieConsent('all'); hideBanner(); });
+  document.getElementById('cookieReject').addEventListener('click', function() { setCookieConsent('essential'); hideBanner(); });
+  document.getElementById('cookieConfig').addEventListener('click', function() {
+    document.getElementById('cookieConfigOverlay').style.display = 'flex';
+  });
+
+  function saveCookieConfig(saveAll) {
+    const analytics = document.getElementById('toggleAnalytics').checked;
+    const marketing = document.getElementById('toggleMarketing').checked;
+    const val = saveAll ? (analytics && marketing ? 'all' : analytics ? 'analytics' : marketing ? 'marketing' : 'essential') : 'essential';
+    setCookieConsent(val);
+    document.getElementById('cookieConfigOverlay').style.display = 'none';
+    hideBanner();
+  }
+
+  window.addEventListener('load', function() {
+    if (!getCookieConsent()) {
+      setTimeout(function() {
+        document.getElementById('cookieBanner').style.transform = 'translateY(0)';
+      }, 800);
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLegal();
+      document.getElementById('cookieConfigOverlay').style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
